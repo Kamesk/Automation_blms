@@ -1,0 +1,29 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import os
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+import traceback
+
+# For webdriver
+profile_name = 'WWCRAutomation'
+profile_path = rf'{os.path.expanduser("~")}\Chrome Profiles\{profile_name}'
+driver_path = rf'{os.path.expanduser("~")}\Chrome Profiles\chromedriver.exe'
+
+try:
+    # First, let's get the chrome driver
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument(f'user-data-dir={profile_path}')
+    chrome_options.add_argument(f'--profile-directory={profile_name}')
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    browser = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    browser.get('https://catalog-admin.corp.amazon.com/enums')
+    time.sleep(10)
+except:
+    print(traceback.format_exc())
+
+cmd
+chrome --user-data-dir="C:\Users\kamesk\Chrome Profiles\WWCRAutomation" --profile-directory="WWCRAutomation"
